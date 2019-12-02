@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <title>Geolocation API</title>
+  </head>
+  <body>
+  <div class="container">
+    <h1>Geolocation API</h1>
+    <p>Click the button to get your Location.</p>
+
+<button type="button" class="btn btn-success" onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<p>Country: <em><span id="country"></span></em></p>
+  <p>State: <em><span id="state"></span></em></p>
+    <p>City: <em><span id="city"></span></em></p>
+      <p>Latitude: <em><span id="latitude"></span></em></p>
+        <p>Longitude: <em><span id="longitude"></span></em></p>
+          <p>IP: <em><span id="ip"></span></em></p>
+    </div>
+
+    <script>
+function getLocation(){
+$.ajax({
+  url: "https://geolocation-db.com/jsonp",
+  jsonpCallback: "callback",
+  dataType: "jsonp",
+  success: function(location) {
+    $('#country').html(location.country_name);
+    $('#state').html(location.state);
+    $('#city').html(location.city);
+    $('#latitude').html(location.latitude);
+    $('#longitude').html(location.longitude);
+    $('#ip').html(location.IPv4);
+  }
+});
+}
+
+</script>
+    
+  </body>
+</html>
